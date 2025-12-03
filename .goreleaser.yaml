@@ -1,0 +1,91 @@
+version: 2
+
+project_name: kube-dependency-checker
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: kube-dependency-checker
+    main: .
+    binary: kube-dependency-checker
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ignore:
+      - goos: windows
+        goarch: arm64
+    ldflags:
+      - -s -w
+      - -X github.com/pmady/kube-dependency-checker/cmd.Version={{.Version}}
+      - -X github.com/pmady/kube-dependency-checker/cmd.GitCommit={{.Commit}}
+      - -X github.com/pmady/kube-dependency-checker/cmd.BuildDate={{.Date}}
+
+archives:
+  - id: default
+    format: tar.gz
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - LICENSE
+      - README.md
+
+checksum:
+  name_template: "checksums.txt"
+
+snapshot:
+  version_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^chore:"
+      - Merge pull request
+      - Merge branch
+
+release:
+  github:
+    owner: pmady
+    name: kube-dependency-checker
+  draft: false
+  prerelease: auto
+  name_template: "{{.ProjectName}} v{{.Version}}"
+
+brews:
+  - name: kube-dependency-checker
+    repository:
+      owner: pmady
+      name: homebrew-tap
+    directory: Formula
+    homepage: "https://github.com/pmady/kube-dependency-checker"
+    description: "CLI tool to check Kubernetes component version compatibility"
+    license: "Apache-2.0"
+    skip_upload: auto
+    test: |
+      system "#{bin}/kube-dependency-checker", "version"
+    install: |
+      bin.install "kube-dependency-checker"
+
+dockers:
+  - image_templates:
+      - "ghcr.io/pmady/kube-dependency-checker:{{ .Version }}"
+      - "ghcr.io/pmady/kube-dependency-checker:latest"
+    dockerfile: Dockerfile
+    build_flag_templates:
+      - "--label=org.opencontainers.image.title={{ .ProjectName }}"
+      - "--label=org.opencontainers.image.version={{ .Version }}"
+      - "--label=org.opencontainers.image.source={{ .GitURL }}"
+      - "--platform=linux/amd64"
+    skip_push: auto
