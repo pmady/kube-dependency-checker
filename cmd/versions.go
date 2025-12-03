@@ -108,7 +108,7 @@ func showAllK8sVersions(component string) error {
 	versions := compatibility.GetSupportedVersions()
 	sort.Sort(sort.Reverse(sort.StringSlice(versions)))
 
-	fmt.Printf("\n%s versions across Kubernetes releases:\n", strings.Title(component))
+	fmt.Printf("\n%s versions across Kubernetes releases:\n", strings.ToUpper(component[:1])+component[1:])
 	fmt.Println(strings.Repeat("-", 60))
 	fmt.Printf("%-15s %-15s %-15s\n", "K8S VERSION", "VERSION", "RECOMMENDED")
 	fmt.Println(strings.Repeat("-", 60))

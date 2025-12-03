@@ -37,7 +37,7 @@ Examples:
 func init() {
 	rootCmd.AddCommand(checkCmd)
 	checkCmd.Flags().StringVar(&k8sVersion, "k8s-version", "", "Kubernetes version to check (e.g., 1.30)")
-	checkCmd.MarkFlagRequired("k8s-version")
+	_ = checkCmd.MarkFlagRequired("k8s-version")
 }
 
 func runCheck(cmd *cobra.Command, args []string) error {

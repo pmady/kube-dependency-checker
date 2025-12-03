@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"fmt"
-	"sort"
 	"strconv"
 	"strings"
 
@@ -38,8 +37,8 @@ func init() {
 	rootCmd.AddCommand(upgradeCmd)
 	upgradeCmd.Flags().StringVar(&fromVersion, "from", "", "Starting Kubernetes version")
 	upgradeCmd.Flags().StringVar(&toVersion, "to", "", "Target Kubernetes version")
-	upgradeCmd.MarkFlagRequired("from")
-	upgradeCmd.MarkFlagRequired("to")
+	_ = upgradeCmd.MarkFlagRequired("from")
+	_ = upgradeCmd.MarkFlagRequired("to")
 }
 
 func runUpgrade(cmd *cobra.Command, args []string) error {
@@ -139,9 +138,3 @@ func parseMinorVersion(version string) int {
 	return 0
 }
 
-// Helper to get sorted versions
-func getSortedVersions() []string {
-	versions := compatibility.GetSupportedVersions()
-	sort.Sort(sort.Reverse(sort.StringSlice(versions)))
-	return versions
-}

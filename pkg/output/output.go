@@ -71,13 +71,13 @@ func NewFormatter(format string) Formatter {
 // Format outputs the result as a table
 func (f *TableFormatter) Format(result *CheckResult) error {
 	// Header
-	fmt.Fprintf(f.Writer, "\n")
-	fmt.Fprintf(f.Writer, "Kubernetes Version: %s\n", result.K8sVersion)
-	fmt.Fprintf(f.Writer, "%s\n\n", strings.Repeat("=", 60))
+	_, _ = fmt.Fprintf(f.Writer, "\n")
+	_, _ = fmt.Fprintf(f.Writer, "Kubernetes Version: %s\n", result.K8sVersion)
+	_, _ = fmt.Fprintf(f.Writer, "%s\n\n", strings.Repeat("=", 60))
 
 	// Table header
-	fmt.Fprintf(f.Writer, "%-28s %-15s %-15s %-12s\n", "COMPONENT", "REQUIRED", "RECOMMENDED", "STATUS")
-	fmt.Fprintf(f.Writer, "%s\n", strings.Repeat("-", 70))
+	_, _ = fmt.Fprintf(f.Writer, "%-28s %-15s %-15s %-12s\n", "COMPONENT", "REQUIRED", "RECOMMENDED", "STATUS")
+	_, _ = fmt.Fprintf(f.Writer, "%s\n", strings.Repeat("-", 70))
 
 	// Component rows
 	for _, c := range result.Components {
@@ -90,22 +90,22 @@ func (f *TableFormatter) Format(result *CheckResult) error {
 		if recommended == "" {
 			recommended = "-"
 		}
-		fmt.Fprintf(f.Writer, "%-28s %-15s %-15s %s\n", c.Name, required, recommended, status)
+		_, _ = fmt.Fprintf(f.Writer, "%-28s %-15s %-15s %s\n", c.Name, required, recommended, status)
 	}
 
 	// Summary
-	fmt.Fprintf(f.Writer, "\n%s\n", strings.Repeat("-", 70))
-	fmt.Fprintf(f.Writer, "Summary: %d components checked\n", result.Summary.TotalComponents)
+	_, _ = fmt.Fprintf(f.Writer, "\n%s\n", strings.Repeat("-", 70))
+	_, _ = fmt.Fprintf(f.Writer, "Summary: %d components checked\n", result.Summary.TotalComponents)
 	if result.Summary.IncompatibleCount > 0 {
-		fmt.Fprintf(f.Writer, "  ⚠️  %d incompatible\n", result.Summary.IncompatibleCount)
+		_, _ = fmt.Fprintf(f.Writer, "  ⚠️  %d incompatible\n", result.Summary.IncompatibleCount)
 	}
 	if result.Summary.UnknownCount > 0 {
-		fmt.Fprintf(f.Writer, "  ❓ %d unknown\n", result.Summary.UnknownCount)
+		_, _ = fmt.Fprintf(f.Writer, "  ❓ %d unknown\n", result.Summary.UnknownCount)
 	}
 	if result.Summary.CompatibleComponents == result.Summary.TotalComponents {
-		fmt.Fprintf(f.Writer, "  ✅ All components compatible\n")
+		_, _ = fmt.Fprintf(f.Writer, "  ✅ All components compatible\n")
 	}
-	fmt.Fprintf(f.Writer, "\n")
+	_, _ = fmt.Fprintf(f.Writer, "\n")
 
 	return nil
 }
