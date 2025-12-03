@@ -48,6 +48,10 @@ Before contributing, please read our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
 
+## DCO
+
+All contributors must sign off their commits using the Developer Certificate of Origin (DCO). See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+
 ## Maintainers
 
 See [MAINTAINERS.md](MAINTAINERS.md) for the list of maintainers.
