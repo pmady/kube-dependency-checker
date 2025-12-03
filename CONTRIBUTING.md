@@ -2,6 +2,39 @@
 
 Thank you for your interest in contributing to Kube Dependency Checker! This document provides guidelines and information about contributing to this project.
 
+## Developer Certificate of Origin (DCO)
+
+This project uses the [Developer Certificate of Origin (DCO)](https://developercertificate.org/) to ensure that contributors have the right to submit their contributions.
+
+By contributing to this project, you agree to the DCO, which states that you have the right to submit your contribution and that you agree to license it under the project's open source license.
+
+### Signing Your Commits
+
+All commits must be signed off with your real name and email address:
+
+```bash
+git commit -s -m "Your commit message"
+```
+
+This adds a `Signed-off-by` line to your commit message:
+
+```
+Signed-off-by: Your Name <your.email@example.com>
+```
+
+### Signing Past Commits
+
+If you forgot to sign off on a commit, you can amend it:
+
+```bash
+# For the last commit
+git commit --amend -s
+
+# For multiple commits, use interactive rebase
+git rebase -i HEAD~n  # where n is the number of commits
+# Then mark commits as 'edit' and run: git commit --amend -s
+```
+
 ## Code of Conduct
 
 This project follows the [CNCF Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
