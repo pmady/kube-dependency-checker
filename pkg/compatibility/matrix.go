@@ -1,3 +1,6 @@
+// Package compatibility provides Kubernetes version compatibility data.
+// It contains the compatibility matrix for various Kubernetes versions
+// and their associated component versions (etcd, CoreDNS, containerd, etc.).
 package compatibility
 
 // ComponentInfo holds version compatibility information for a component
