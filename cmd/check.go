@@ -1,3 +1,5 @@
+// check.go implements the 'check' command for verifying Kubernetes
+// component version compatibility against a specified Kubernetes version.
 package cmd
 
 import (
