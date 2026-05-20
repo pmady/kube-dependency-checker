@@ -8,7 +8,7 @@
 
 ## Reporting a Vulnerability
 
-We take security seriously. If you discover a security vulnerability, please follow these steps:
+If you find a security vulnerability, please report it privately.
 
 ### Do NOT
 
@@ -17,7 +17,7 @@ We take security seriously. If you discover a security vulnerability, please fol
 
 ### Do
 
-1. **Email us directly** at [security@example.com] with details of the vulnerability
+1. **Use GitHub's private vulnerability reporting** at https://github.com/pmady/kube-dependency-checker/security/advisories/new, or email **pavan4devops@gmail.com** with details of the vulnerability
 2. **Include the following information**:
    - Type of vulnerability
    - Full paths of source file(s) related to the vulnerability
@@ -28,30 +28,23 @@ We take security seriously. If you discover a security vulnerability, please fol
 
 ### What to Expect
 
-- **Acknowledgment**: We will acknowledge receipt of your vulnerability report within 48 hours
-- **Communication**: We will keep you informed of the progress towards a fix
-- **Disclosure**: We will coordinate with you on the public disclosure timeline
-- **Credit**: We will credit you in the security advisory (unless you prefer to remain anonymous)
+- Acknowledgment within 48 hours
+- We'll keep you updated on the fix
+- Coordinated disclosure timeline
+- Credit in the advisory unless you prefer not to be named
 
 ## Security Best Practices
 
-When using this project:
-
-1. Always use the latest stable version
-2. Keep your Kubernetes cluster and dependencies up to date
-3. Follow the principle of least privilege
-4. Regularly audit your configurations
+- Use the latest stable version
+- Keep your cluster and dependencies current
+- Least-privilege RBAC
 
 ## Security Updates
 
-Security updates will be released as patch versions and announced through:
-
-- GitHub Security Advisories
-- Release notes
-- Project mailing list
+Security fixes ship as patch releases and get announced via GitHub Security Advisories and release notes.
 
 ## Contact
 
 For security-related inquiries, please contact:
-- Email: [security@example.com]
-- GPG Key: [Link to GPG key if available]
+- GitHub Security Advisories: https://github.com/pmady/kube-dependency-checker/security/advisories/new
+- Email: pavan4devops@gmail.com
