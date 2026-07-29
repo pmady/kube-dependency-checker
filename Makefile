@@ -1,4 +1,4 @@
-.PHONY: build clean test lint install release help
+.PHONY: build clean test lint install release help fmt vet
 
 # Build variables
 BINARY_NAME=kube-dependency-checker
@@ -72,6 +72,14 @@ release:
 ## release-snapshot: Create a snapshot release (for testing)
 release-snapshot:
 	goreleaser release --snapshot --clean
+
+## fmt: Format Go code
+fmt:
+	$(GOCMD) fmt ./...
+
+## vet: Run go vet
+vet:
+	$(GOCMD) vet ./...
 
 ## help: Show this help
 help:

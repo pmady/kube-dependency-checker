@@ -1,3 +1,6 @@
+// Package cmd provides the command-line interface for kube-dependency-checker.
+// It includes commands for checking Kubernetes component compatibility,
+// planning upgrades, and listing supported versions.
 package cmd
 
 import (
